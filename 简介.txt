@@ -1,5 +1,5 @@
 HTML 内容
-CSS 样式
+CSS 样式——美化、布局页面
 JS 交互
 
 1、HTML简介
