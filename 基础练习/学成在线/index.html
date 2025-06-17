@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学成在线</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 头部模块开始 -->
+    <div class="header w">
+        <div class="logo">
+            <img src="images/logo.png" >
+        </div>
+        <div class="nav">
+            <!-- 导航栏注意点：实际开发中，我们不会直接用<a>而是用li+a的做法
+                （1）li+a语义更加清晰，一看就是有条理的列表内容；
+                （2）直接用<a>，搜索引擎容易辨别为堆关键词嫌疑（故意堆砌关键词容易被搜索引擎降权），从而影响网站排名
+            -->
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">课程</a></li>
+                <li><a href="#">职业规划</a></li>
+            </ul>
+        </div>
+        <div class="search">
+            <input type="text" name="search" id="search" value="输入关键词">
+            <button></button>
+        </div>
+        <div class="user">
+            <!-- img和其它兄弟元素直接放一起，会导致上下错位 -->
+            <img src="images/user.png" />
+            qq.l
+        </div>
+    </div>
+    <!-- 头部模块结束 -->
+    <!-- banner模块开始 -->
+    <div class="banner">
+        <div class="w">
+            <div class="subnav">
+                <ul>
+                    <li><a href="#">前端开发<span>&gt;</span></a></li>
+                    <li><a href="#">移动开发<span>&gt;</span></a></li>
+                    <li><a href="#">编程开发<span>&gt;</span></a></li>
+                    <li><a href="#">数据库<span>&gt;</span></a></li>
+                    <li><a href="#">人工智能<span>&gt;</span></a></li>
+                    <li><a href="#">云计算/大数据<span>&gt;</span></a></li>
+                    <li><a href="#">UI设计<span>&gt;</span></a></li>
+                    <li><a href="#">游戏开发<span>&gt;</span></a></li>
+                    <li><a href="#">智能硬件/物联网<span>&gt;</span></a></li>
+                    <li><a href="#">研发管理<span>&gt;</span></a></li>
+                </ul>
+            </div>
+            <div class="course">
+                <h3 class="course-top">我的课程表</h3>
+                <div class="course-bottom">
+                    <ul>
+                        <li>
+                            <!-- 因为li中有两行，而外部大盒子的高度是固定的，所以li的高度一定程度也会受文字的影响，所以一开始不要写死。
+                            因为一旦高度写死，设置li的padding后上下不一定显示对称，因为无法把握两行文字的高度
+                            -->
+                            <h4>继续学习 程序设计语言</h4>
+                            <!-- 这里用p标签不用span标签的原因是，span标签默认取行高，所以和上面一行之间的距离会多一个行距不美观。块级元素默认就是内容高度 -->
+                            <span>正在学习-使用对象qqlll</span>
+                        </li>
+                        <li>
+                            <h4>继续学习 程序设计语言</h4>
+                            <span>正在学习-使用对象</span>
+                        </li>
+                        <li>
+                            <h4>继续学习 程序设计语言</h4>
+                            <span>正在学习-使用对象</span>
+                        </li>
+                    </ul>
+                    <a href="#">全部课程</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner模块结束 -->
+    <!-- 精品推荐开始 -->
+    <div class="goods w">
+        <h3>精品推荐</h3>
+        <ul>
+            <li><a href="#">JQuery</a></li>
+            <li><a href="#">JQuery</a></li>
+            <li><a href="#">JQuery</a></li>
+            <li><a href="#">JQuery</a></li>
+            <li><a href="#">JQuery</a></li>
+            <li><a href="#">JQuery</a></li>
+        </ul>
+        <a href="#" class="mod">修改兴趣</a>
+    </div>
+    <!-- 精品推荐结束 -->
+    <!-- 精品推荐大模块开始 -->
+    <div class="box w">
+        <div class="box-head">
+            <h3>精品推荐</h3>
+            <a href="#">查看全部</a>
+        </div>
+        <div class="box-body">
+            <ul>
+                <li>
+                    <img src="images/pic.png">
+                    <h4>Think PHP 5.0博客系统实战项目演练</h4>
+                    <div class="info">
+                        <span>高级</span> · 1225人在学习
+                    </div>
+                </li>
+                <li>
+                    <img src="images/pic.png">
+                    <h4>Think PHP 5.0博客系统实战项目演练</h4>
+                    <div class="info">
+                        <span>高级</span> · 1225人在学习
+                    </div>
+                </li>
+                <li>
+                    <img src="images/pic.png">
+                    <h4>Think PHP 5.0博客系统实战项目演练</h4>
+                    <div class="info">
+                        <span>高级</span> · 1225人在学习
+                    </div>
+                </li>
+                <li>
+                    <img src="images/pic.png">
+                    <h4>Think PHP 5.0博客系统实战项目演练</h4>
+                    <div class="info">
+                        <span>高级</span> · 1225人在学习
+                    </div>
+                </li>
+                <li>
+                    <img src="images/pic.png">
+                    <h4>Think PHP 5.0博客系统实战项目演练</h4>
+                    <div class="info">
+                        <span>高级</span> · 1225人在学习
+                    </div>
+                </li>
+                <li>
+                    <img src="images/pic.png">
+                    <h4>Think PHP 5.0博客系统实战项目演练</h4>
+                    <div class="info">
+                        <span>高级</span> · 1225人在学习
+                    </div>
+                </li>
+                <li>
+                    <img src="images/pic.png">
+                    <h4>Think PHP 5.0博客系统实战项目演练</h4>
+                    <div class="info">
+                        <span>高级</span> · 1225人在学习
+                    </div>
+                </li>
+                <li>
+                    <img src="images/pic.png">
+                    <h4>Think PHP 5.0博客系统实战项目演练</h4>
+                    <div class="info">
+                        <span>高级</span> · 1225人在学习
+                    </div>
+                </li>
+                <li>
+                    <img src="images/pic.png">
+                    <h4>Think PHP 5.0博客系统实战项目演练</h4>
+                    <div class="info">
+                        <span>高级</span> · 1225人在学习
+                    </div>
+                </li>
+                <li>
+                    <img src="images/pic.png">
+                    <h4>Think PHP 5.0博客系统实战项目演练</h4>
+                    <div class="info">
+                        <span>高级</span> · 1225人在学习
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 精品推荐大模块结束 -->
+    <!-- 页尾开始 -->
+    <div class="footer">
+        <div class="w">
+            <div class="copyright">
+                <img src="images/logo.png">
+                <p>学成在线致力于普及中国最好的教育，它与中国一流大学与机构合作提供在线课程。<br>2017年XTCG Ino保留权利。-沪ICP备0010011号</p>
+                <a href="#">下载APP</a>
+            </div>
+            <div class="links">
+                <dl>
+                    <dt><a href="#">关于学成网</a></dt>
+                    <dd><a href="">关于</a></dd>
+                    <dd><a href="">管理团队</a></dd>
+                    <dd><a href="">工作机会</a></dd>
+                    <dd><a href="">客户服务</a></dd>
+                    <dd><a href="">帮助</a></dd>
+                </dl>
+                <dl>
+                    <dt><a href="#">新手指南</a></dt>
+                    <dd><a href="">如何注册</a></dd>
+                    <dd><a href="">如何选课</a></dd>
+                    <dd><a href="">如何拿到毕业证</a></dd>
+                    <dd><a href="">学分是什么</a></dd>
+                    <dd><a href="">考试未通过怎么办</a></dd>
+                </dl>
+                <dl>
+                    <dt><a href="#">合作伙伴</a></dt>
+                    <dd><a href="">合作机构</a></dd>
+                    <dd><a href="">合作导师</a></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <!-- 页尾结束 -->
+</body>
+</html>

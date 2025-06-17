@@ -1,0 +1,303 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+body {
+    color: rgb(0,0,0);
+    background-color: #f4f5f9;
+}
+
+.header {
+    height: 42px;
+    padding: 30px 0;
+}
+/* 
+以下清除浮动不需要，因为已经给父元素设置了高度
+.header:before, .header:after {
+    content: "";
+    display: table;
+}
+.header:after {
+    clear: both;
+} */
+.logo {
+    float: left;
+    width: 198px;
+    height: 42px; 
+}
+.nav {
+    float: left;
+    margin: 0 60px;
+}
+.nav ul li {
+    float: left;
+    margin: 0 15px;
+}
+.nav ul li a {
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 10px;
+    color: #050505;
+    font-size: 18px;
+}
+.nav ul li a:hover {
+    border-bottom: 2px solid #00a3ff;
+}
+.search {
+    float: left;
+    width: 412px;
+}
+.search input {
+    /* 设置浮动的原因是input是行内块元素，行内块元素之间有空隙占了空间。如果.search没有设置宽度，那么就不用设置浮动 */
+    float: left;
+    width: 340px;
+    height: 40px;
+    padding-left: 20px; 
+    border: 1px solid #00a3ff;
+    font-size: 14px;
+    color: #bfbfbf;
+}
+.search button {
+    /* 设置浮动的原因是input是行内块元素，行内块元素之间有空隙占了空间。如果.search没有设置宽度，那么就不用设置浮动 */    float: left;
+    width: 50px;
+    height: 42px;
+    /* 设置背景图片而不是在结构中添加img的好处是，背景图片会自动拉伸图片以适应盒子大小 */
+    background-image: url(images/btn.png);
+    border: 0;
+}
+.user {
+    float: right;
+    height: 42px;
+    margin-right: 22px;
+    line-height: 42px;
+    font-size: 14px;
+    color: #666;
+}
+.user img {
+    vertical-align: middle;
+}
+
+.banner {
+    height: 420px;
+    background-color: #1c036b;
+}
+
+.banner .w{
+    height: 420px;
+    background: url(images/banner2.png) no-repeat center; 
+}
+.subnav {
+    float: left;
+    width: 192px;
+    height: 420px;
+    background-color: rgba(0,0,0,0.3);
+}
+.subnav li a {
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    /* 选用padding不用margin是因为:hover包含了padding部分，而margin的部分是不起作用的 */
+    padding: 0 22px; 
+    color: #fffff4;
+}
+.subnav li a:hover {
+    color: #00a3ff;
+}
+.subnav li a span {
+    float: right;
+    height: 42px;
+    font-weight: 200;
+}
+.course {
+    float: right;
+    width: 190px;
+    height: 300px;
+    margin: 40px 0;
+    padding: 20px;
+    background: #f4f5f9;
+}
+.course-top {
+    height: 48px;
+    line-height: 48px;
+    background: #9bceea;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+.course-bottom li {
+    padding: 14px 0;
+    border-bottom: 1px solid #ccc ;
+}
+.course-bottom h4 {
+    font-size: 16px;
+    color: #4e4e4e;
+    font-weight: 400;
+    background: #00a3ff;
+}
+.course-bottom span {
+    /* 解决span标签和div标签之间有空白间隙的问题 */
+    /* vertical-align: top;    */
+    background-color: pink;
+    font-size: 12px;
+    color: #a5a5a5;
+}
+.course-bottom a{
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    margin-top: 10px;
+    text-align: center;
+    color: #00a3ff;
+    border: 1px solid #00a3ff;
+}
+
+.goods {
+    /* 直接给父元素设置height等于line-height，子元素都会居中对齐。因为line-height会继承 */
+    height: 60px;
+    line-height: 60px;
+    background: #fff;
+    margin: 10px auto;
+    box-shadow: 0 2px 2px 1px rgba(0,0,0,.1);
+}
+.goods h3 {
+    float: left;
+    padding: 0 30px;
+    color: #00a3ff;
+    font-size: 16px;
+}
+.goods ul {
+    float: left;
+}
+.goods ul li {
+    float: left;
+}
+.goods ul li a {
+    padding: 0 30px;
+    font-size: 14px;
+    color: #050505;
+    border-left: 1px solid rgba(0,0,0,.5);
+}
+.mod {
+    float: right;
+    margin-right: 30px;
+    color: #00a3ff;
+    font-size: 14px;
+}
+
+.box-head {
+    height: 45px;
+    margin-top: 30px;
+}
+.box-head h3 {
+    float: left;
+    font-size: 20px;
+    color: #494949;
+}
+.box-head a {
+    float: right;
+    margin: 10px 30px;
+    color: #bfbfbf;
+    font-size: 14px;
+}
+.box-body {
+    /* 清除浮动的影响，同时隐藏超出的ul */
+    overflow: hidden;
+}
+.box-body ul {
+    /* 设置ul的宽度超出.box的宽度，就不用单独找出不需要有外边距的元素了。
+
+        【问题】为什么此方案行得通？或者说，为什么ul宽度超过.box不会换行？
+        答：浮动元素脱离标准布局流，即使浮动子元素宽度超过父元素，也不会换行。可以理解为，
+        浮动是漂浮在正常盒子的上方的，并不算真正意义上的参与布局，因为在后方的标准布局流元
+        素会显示在浮动元素的正下方（但文本会错开）
+    */
+    width: 1225px;
+    height: 100px;
+    background: red;
+}
+.box-body ul li {
+    float: left;
+    width: 230px;
+    height: 305px;
+    margin: 0 12.5px 12.5px 0;
+    background-color: #fff;
+}
+.box-body ul li img {
+    width: 100%;
+}
+.box-body ul li h4 {
+    margin: 26px 23px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #050505;
+}
+.box-body ul li div {
+    margin: 0 23px;
+}
+.info {
+    font-size: 12px;
+    color: #999;
+}
+.info span {
+    color: #ff7c2d;
+    font-size: 14px;
+}
+
+.footer {
+    margin-top:30px;
+    height: 300px;
+    background: #fff;
+    border-top: 1px solid #fff;
+}
+.footer .w {
+    margin-top: 35px;
+}
+.copyright {
+    float: left;
+    line-height: 36px;
+}
+.copyright p {
+    font-size: 14px;
+    color: #494949;
+}
+.copyright a {
+    display: block;
+    width: 118px;
+    height: 33px;
+    line-height: 33px;
+    margin-top: 10px;
+    color: #00a4ff;
+    text-align: center;
+    border: 2px solid #00a4ff;
+}
+.links {
+    float: right;
+}
+.links dl {
+    float: left;
+    margin-right: 40px;
+}
+.links dt {
+    margin-bottom: 20px;
+}
+.links dt a {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
+}
+.links dd a {
+    font-size: 14px;
+    line-height: 26px;
+    color: #333333;
+}
