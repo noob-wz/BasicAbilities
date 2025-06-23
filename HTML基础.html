@@ -108,7 +108,7 @@
         <strong>我是加粗的文字，但我比b标签语义更强烈，更推荐"</strong>
 
         <i>我是倾斜的文字</i>
-        <em>我是加粗的文字，但我比i标签语义更强烈，更推荐</em>
+        <em>比i标签语义更强烈，更推荐。表示强调</em>
 
         <s>我是删除字</s>
         <del>我是删除字，但我比s标签语义更强烈，更推荐</del>
@@ -311,7 +311,7 @@
         目的：网页中，需要跟用户进行交互，收集用户信息，此时就用到表单。
 
         在HTML中，一个完整的表单通常由“表单域”、“表单控件（也称为表单元素）”和“提示信息”3个部分构成。
-            表单域：把完整表单包含进去的区域，即包含表单元素的区域。
+            一、表单域：把完整表单包含进去的区域，即包含表单元素的区域。
                 在HTML中，<form>标签定义表单域，以实现用户信息的收集和传递。
                 作用：<form>元素会把它范围内的表单元素信息提交给服务器。<form>语法如下：
 
@@ -323,9 +323,9 @@
                     属性                属性值              作用
                     action             url地址              用于指定接收并处理表单数据的服务器程序的url地址
                     method             get/post            用于设置表单数据的提交方式，其取值为get或post
-                    name               名称                 用于指定表单的名称，以区分同一个页面中的多个表单域
+                    name               名称                 用于指定表单的名称，以区分同一个页面中的多个表单域。必须要有，保证表单正常工作。
 
-            表单元素：允许用户在表单中输入或选择的内容控件，比如下拉框、输入框、选择框
+            二、表单元素：允许用户在表单中输入或选择的内容控件，比如下拉框、输入框、选择框
                 <input>输入表单元素（input标签为单标签）
                     <input>标签用户收集用户信息，包含一个必须要有的属性type，根据不同的属性值，输入字段拥有了很多种形式（文本字段、复选框、单选按钮、按钮等）
                         【type属性值及描述】
@@ -347,8 +347,15 @@
                         checked    checked        规定此input表单元素首次加载时应当被选中。单选和复选按钮可以用checked属性
                         maxlength  正整数          规定输入字段中字符的最大长度
                             要点：（1）每个表单元素都有name和value的属性值，主要给后台人员使用。
-                                （2）提交表单后，需要 name 属性引用表单数据。如果没有，<input>中的数据不会被提交
-                                (3) input中的样式必须要在当前元素设置，在父元素中设置无效
+                                （2）如果没有name属性，<input>中的表单数据不会被提交到服务器。提交表单后，需要 name 属性引用数据库中的表单数据。
+                                    【问题1：name属性是不是必须的？】
+                                        从HTML规范来看，name属性并不是强制必须的（即没有name属性，元素仍然可以正常显示和交互）。但是
+                                        ，如果没有name属性，该表单字段的值将不会包含在提交的数据中。也就是说，服务器端将无法接收到这个字段的数据。
+                                    【问题2：没有name属性的input元素，是不是就没有意义了？】
+                                        这取决于该input元素在表单中的用途。如果这个input的值不需要提交到服务器，那么没有name属性是可以接受的。例
+                                        如，有些前端交互可能使用input作为临时用户输入，然后通过JavaScript处理，并不需要提交到服务器。但是，如果
+                                        这个input的值需要被提交，那么name属性就是必须的。
+                                (3) input中的字体颜色、大小等样式必须要在当前元素设置，在父元素中设置无效，因为默认样式会覆盖继承样式
 
                     <label>标签为input元素定义标注。通常用于绑定一个元素，当点击<label>标签中的文本时，浏览器会自动将光标转到或选择对应的表单元素上，用来增加用户体验。
                         要点：（1）<label>标签中的for属性应该和<input>/<textarea>中的id属性的属性值相同
@@ -361,16 +368,18 @@
                     </select>
                     要点:（1）每个<option>元素都应该有一个 value 属性，其中包含被选中时需要提交到服务器的数据值。如果不含 value 属性，则 value 值默认为元素中的文本
                         （2）当在<option>中定义selected="selected"时，当前选项即为默认选中项
-                        （3）提交表单后，需要 name 属性引用表单数据（如果省略 name 属性，下拉列表中的数据将不会被提交）
+                        （3）提交表单后，需要 name 属性引用表单数据（如果省略 name 属性，下拉列表中的数据将不会被提交到服务器）
 
                 <textarea>文本域元素
                     使用场景：当用户输入内容较多时，就不能用文本框表单了，可以用文本域标签
                     语法：<textarea name="" id="" rows="显示的行数" cols="每行显示的字符数"></textarea>
                         说明：(1)实际开发中，不会使用rows和cols，基本使用CSS来改变大小
-                            (2)提交表单后需要 name 属性来引用表单数据（如果省略 name 属性，则不会提交文本区域的数据）
+                            (2)提交表单后需要 name 属性来引用表单数据（如果省略 name 属性，则不会提交文本区域的数据到服务器）
 
-
-            提示信息：通常和表单控件一起出现，提示表单控件填入内容
+                【注意】HTML表单元素通常会包含在<form>标签内，以便于提交数据，但并非所有表单元素都需要与<form>一起使用。一些表单元素，如<input type="text">，如果脱离了<form>
+                    ，仍然可以用于获取用户输入，但需要额外的方式来处理这些输入数据，例如通过JavaScript。没有form包含的表单主要起到临时用户交互的作用，通常用js处理，不需要提交数据到服务器
+                    
+            三、提示信息：通常和表单控件一起出现，提示表单控件填入内容
         -->
         <form action="demo.php" method="post" name="name1">
             <label for="username">用户名：</label><input type="text" name="username" value="请输入用户名" id="username"><br />
@@ -393,7 +402,152 @@
 
             <label for="advice">建议：</label>
             <textarea name="advice" id="advice" rows="5" cols="30">请说说你的建议</textarea>
+        </form>
 
+
+
+    <!-- HTML5新增布局和表单标签
+        
+        HTML5主要针对以前的不足，增加了一些新的标签、新的表单和新的表单属性等。但是，
+        这些新特性都具有兼容性问题，基本上都是IE9+以上浏览器才支持。如果不考虑兼容性问题，
+        可以大量使用这些新特性。
+        
+        一、HTML5新增语义化标签
+            以前布局，通常想到的都是用div盒子来布局，但div标签对于搜索引擎来说，是没有语义的
+            。HTML5 提供的新元素更好地描述文档结构，也极大地帮助了搜索引擎理解和索引网页内容
+
+                标签                描述
+                header             定义文档或节的页眉
+                nav                定义文档内的导航链接
+                article            文章内容元素
+                section            定义文档某个主题区域。可以理解为大号div
+                aside              侧边栏标签
+                footer             尾部标签
+            【注意】
+            （1）语义化标签主要针对搜索引擎制作（具体见结构中的内部链接）
+            （2）这些标签可以多次使用；
+            （3）特殊情况，IE9中这些标签默认不是块级元素，需要把这些元素转换成块元素；
+            （4）移动端更喜欢使用这些标签
+            （5）补充：上面这些语义化标签不是全部，但以上四点注意事项针对其他标签适用
+        
+        二、HTML5新增的多媒体标签
+            主要包含两个：
+                音频：<audio>
+                视频：<video>
+            使用它们可以很方便的在页面中嵌入音频和视频，而不需要再去使用flash和其他浏览器插件
+
+            （一）视频video标签
+                当前video元素只支持三种视频格式，尽量使用MP4格式，因为MP4几乎所有浏览器都支持，
+                而其它两种视频格式兼容性低
+                【语法说明】
+                1、（常规写法）<video src="文件地址" controls="controls"></video>
+                2、浏览器并不全都支持相同的视频格式，可以在嵌套的<source> 元素中提供多个媒体源，浏览器会使用它能识别的第一个源。
+                    （照顾兼容性写法）
+                        <video controls>
+                            <source src="文件地址" type="video/mp4">
+                            <source src="文件地址" type="video/ogg">
+                            <source src="文件地址" type="video/webm">
+                            <p>
+                                你的浏览器不支持 HTML5 视频。这里有一个<a href="myVideo.mp4" download="myVideo.mp4">视频</a>链接。
+                            </p>
+                        </video>
+                3、和 <img> 元素的使用类似，在 src 属性里加入一个我们需要展示的视频地址，同时也
+                    可以用其他属性来指定视频的宽度和高度、是否自动或者循环播放、是否展示浏览器默认
+                    的视频控件等。
+                4、指定其他属性不需要额外添加style，直接在标签前半部分内部直接写即可，也不需要“;”。
+                    
+                    (video常见属性)
+                    属性            属性值              描述
+                    autoplay       autoplay           视频就绪自动播放（谷歌浏览器需要添加muted来解决自动播放的问题）
+                    controls       controls           显示播放控制面板
+                    width          像素/百分比          设置播放器宽度
+                    height         像素/百分比          设置播放器高度
+                    loop           loop               播放完是否继续播放，循环播放
+                    preload        auto（预先加载视频）  规定是否预加载视频（如果有了autoplay属性，则忽略该属性）
+                                    none（不预先加载）
+                    src             url                视频地址
+                    poster         Imgurl             加载时显示等待画面图片
+                    muted          muted              静音播放
+            （二）音频audio标签
+                HTML5在不使用插件的情况下，也可以原生的支持音频格式文件的播放，但是和视频一样，支持的格式也有限。当前
+                ，音频标签支持三种音频格式，尽量使用MP3格式，因为MP3几乎所有浏览器都支持
+                    【语法说明】
+                    1、（常规写法）<audio src="文件地址" controls="controls"></audio>
+                    2、浏览器并不全都支持相同的音频格式，可以在嵌套的<source> 元素中提供多个媒体源，浏览器会使用它能识别的第一个源。
+                        （照顾兼容性写法）
+                        <audio controls>
+                            <source src="文件地址" type="audio/mpeg">
+                            <source src="文件地址" type="audio/ogg">
+                            <source src="文件地址" type="audio/wav">
+                            <p>
+                                你的浏览器不支持 HTML5 音频。这里有一个<a href="myAudio.mp3" download="myAudio.mp3">音频</a>链接。
+                            </p>
+                        </audio>
+                    3、和 <img> 元素的使用类似，在 src 属性里加入一个我们需要展示的音频地址，同时也
+                        可以用其他属性来指定是否自动或者循环播放、是否展示浏览器默认的音频控件等。
+                    4、指定其他属性不需要额外添加style，直接在标签前半部分内部直接写即可，也不需要“;”。
+                    
+                        (audio常见属性)
+                        属性            属性值              描述
+                        autoplay       autoplay            音频就绪自动播放（谷歌浏览器需要再通过JavaScript来解决，muted不能解决）
+                        controls       controls            显示播放控制面板
+                        loop           loop                播放完是否继续播放，循环播放
+                        preload        auto（预先加载视频）   规定是否预加载视频（如果有了autoplay属性，则忽略该属性）
+                                        none（不预先加载）
+                        src            url                 音频地址
+                        muted          muted               静音播放
+        
+        三、HTML5新增input表单
+            -------------------------------------------------------------
+                属性值                      描述
+                type="email"               限制用户输入必须为Email类型
+                type="url"                 限制用户输入必须为URL类型
+                type="date"                限制用户输入必须为日期类型
+                type="time"                限制用户输入必须为时间类型
+                type="month"               限制用户输入必须为月类型
+                type="week"                限制用户输入必须为周类型
+                type="number"              限制用户输入必须为数字类型
+                type="tel"                 手机号码
+                type="search"              搜索框
+                type="color"               生成一个颜色选择框
+            --------------------------------------------------------------
+            【注意】验证这些input表单元素效果的时候需要添加form表单域，如果输入错误，提交的时候就会报错
+
+        四、HTML5新增表单属性
+            -------------------------------------------------------------
+                属性            属性值              描述
+                required       required           表示内容不能为空
+                placeholder    提示文本            表单的提示信息，存在默认值则不显示             
+                autofocus      autofocus          自动聚焦属性，页面加载完成自动聚焦到指定表单
+                autocomplete   off/on               当用户在字段开始键入时，浏览器基于之前键入且提交过的值，应该显示出在字段中填写的选项
+                                                    默认已经打开，如autocomplete="on"，关闭autocomplete="off"。但是，加上name属性
+                                                    才可行
+                multiple        multiple           主要应用于file类型的表单，表示可以多选文件提交                                  
+            --------------------------------------------------------------
+            【拓展】如何设置placeholder提示信息的字体颜色
+                input::placeholder {
+                    color: pink;
+                } 
+
+    -->
+        <h4 style="margin-top: 50px;text-align: center;">HTML5新增语义化标签通常在文档中如何使用？（见下图）</h4>
+        <div style="width: 400px;margin: 10px auto"><img src="images/HTML5新增语义化标签.png" alt=""></div>
+        <h4 style="text-align: center;">
+            <a href="HTML5语义标签与搜索引擎优化.html">为什么HTML5标签被称为"针对搜索引擎制作"的标签</a>
+        </h4>
+        <h4>html5新增媒体标签</h4>
+        <video src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e8b84f9055fc9278399f2d7367ac24d0.mp4" controls width="25%"></video>
+        <video src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e8b84f9055fc9278399f2d7367ac24d0.mp4" autoplay muted width="25%"></video>
+        <form action="demo.php" method="post" name="new-form">
+            搜索：<input type="search" name="" id="" required="required" autofocus="autofocus" autocomplete="off"><br />
+            日期：<input type="date" name="" id=""><br />
+            颜色：<input type="color" name="" id=""><br />
+            时间：<input type="time" name="" id=""><br />
+            邮箱：<input type="email" name="" id=""><br />
+            网址：<input type="url" name="" id="" placeholder="请输入网址" value="请输入网址"><br />
+            网址：<input type="url" name="" id="" placeholder="请输入网址"><br />
+            数字：<input type="number" name="" id=""><br />
+            <button>验证</button>
         </form>
     </body>
 </html>

@@ -26,9 +26,14 @@
         <div class="search">
             <input type="text" name="search" id="search" value="输入关键词">
             <button></button>
+            <!-- 
+            <div>
+                <img src="images/btn.png">
+            </div> 
+            -->
         </div>
         <div class="user">
-            <!-- img和其它兄弟元素直接放一起，会导致上下错位 -->
+            <!-- img和其它兄弟元素直接放一起，会导致上下错位。因为内敛元素对齐方式是基线对齐 -->
             <img src="images/user.png" />
             qq.l
         </div>
@@ -106,6 +111,11 @@
                     <div class="info">
                         <span>高级</span> · 1225人在学习
                     </div>
+                    <!-- 选择em标签是为了方便CSS选择器的使用，避免和上方的img冲突覆盖 -->
+                    <em>
+                        <img src="images/new.png" >
+                    </em>
+                    
                 </li>
                 <li>
                     <img src="images/pic.png">
@@ -208,5 +218,10 @@
         </div>
     </div>
     <!-- 页尾结束 -->
+    <div style="width:300px;height:600px;background:pink;">
+        <div style="width:100px;height:200px;background: red;"></div>
+        <div style="width:300px;height:200px;background: green;"></div>
+        <div style="width:400px;height:200px;background: black;"></div>
+    </div>
 </body>
 </html>
